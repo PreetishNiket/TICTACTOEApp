@@ -82,7 +82,7 @@
             android:layout_weight="1"
             android:layout_margin="2dp"
             android:textSize="33dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
         <Button
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
 
@@ -110,7 +110,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
         <Button
@@ -120,7 +120,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
         <Button
@@ -130,7 +130,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
 
@@ -149,7 +149,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
         <Button
@@ -159,7 +159,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
         <Button
@@ -169,7 +169,7 @@
             android:layout_weight="1"
             android:textSize="33dp"
             android:layout_margin="2dp"
-            android:background="@android:color/holo_blue_dark">
+            android:background="@android:color/holo_green_dark">
 
         </Button>
 
