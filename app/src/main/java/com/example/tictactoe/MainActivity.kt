@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+    }
+
     override fun onClick(view: View) {
         if ((view as Button).text.toString() != "") {
             return
