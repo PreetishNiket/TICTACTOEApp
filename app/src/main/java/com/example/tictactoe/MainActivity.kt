@@ -1,5 +1,6 @@
 package com.example.tictactoe
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoe.R.id
 import com.example.tictactoe.R.layout
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     private val buttons = Array(3) { arrayOfNulls<Button?>(3) }
@@ -17,24 +19,30 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private var roundcount = 0
     private var xpoints = 0
     private var opoints = 0
+    private var drawPoints=0
     private var x1: TextView? = null
     private var o1: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
-        x1 = findViewById<TextView?>(id.xwins)
-        o1 = findViewById<TextView?>(id.owins)
+        supportActionBar?.hide()
+        x1 = findViewById(id.xwins)
+        o1 = findViewById(id.owins)
+
         for (i in 0..2) {
             for (j in 0..2) {
-                val ButtonID = "button$i$j"
-                val resID = resources.getIdentifier(ButtonID, "id", packageName)
+                val buttonID = "button$i$j"
+                val resID = resources.getIdentifier(buttonID, "id", packageName)
                 buttons[i][j] = findViewById<Button?>(resID)
                 buttons[i][j]!!.setOnClickListener(this)
             }
         }
-        val buttonreset: Button = findViewById(id.reset)
-        buttonreset.setOnClickListener {
-            resetgame()
+        val buttonReset: Button = findViewById(id.reset)
+        buttonReset.setOnClickListener {
+            resetGame()
+        }
+        settings.setOnClickListener {
+            startActivity(Intent(this,SettingsActivity::class.java))
         }
     }
 
@@ -88,6 +96,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun draw() {
+        drawPoints++
+        draw.text="Draw:$drawPoints"
         Toast.makeText(this, "DRAW", Toast.LENGTH_LONG).show()
         rest()
     }
@@ -95,14 +105,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private fun oWins() {
         opoints++
         Toast.makeText(this, "O WINS", Toast.LENGTH_LONG).show()
-        updatepoints()
+        updatePoints()
         rest()
     }
 
     private fun xWins() {
         xpoints++
         Toast.makeText(this, "X WINS", Toast.LENGTH_LONG).show()
-        updatepoints()
+        updatePoints()
         rest()
     }
 
@@ -116,15 +126,29 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         xturn = true
     }
 
-    private fun updatepoints() {
-        x1!!.text = "X Points:$xpoints"
-        o1!!.text = "O Points:$opoints"
+    private fun updatePoints() {
+        if (xpoints==0)
+        {
+            x1!!.text = "X Wins:"
+        }
+        else
+        {
+            x1!!.text = "X Wins:$xpoints"
+        }
+        if (opoints==0)
+        {
+            o1!!.text = "O Wins:"
+        }
+        else{
+            o1!!.text = "O Wins:$opoints"
+        }
     }
 
-    private fun resetgame() {
+    private fun resetGame() {
         xpoints = 0
         opoints = 0
-        updatepoints()
+        draw.text="Draw:"
+        updatePoints()
         rest()
     }
 }
