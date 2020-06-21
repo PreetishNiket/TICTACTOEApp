@@ -2,6 +2,7 @@ package com.example.tictactoe
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
@@ -22,10 +23,18 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private var drawPoints=0
     private var x1: TextView? = null
     private var o1: TextView? = null
+    private lateinit var mediaPlayer:MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
         supportActionBar?.hide()
+
+        mediaPlayer=MediaPlayer.create(this,R.raw.song)
+        mediaPlayer.isLooping=true
+        mediaPlayer.start()
+
+        //startActivity(Intent(this,BackgroundServices::class.java))
+
         x1 = findViewById(id.xwins)
         o1 = findViewById(id.owins)
 
@@ -44,6 +53,17 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         settings.setOnClickListener {
             startActivity(Intent(this,SettingsActivity::class.java))
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mediaPlayer.stop()
+        mediaPlayer.release()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.stop()
+        mediaPlayer.release()
     }
 
     override fun finish() {
